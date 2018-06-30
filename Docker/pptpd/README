@@ -1,3 +1,8 @@
 BUILD & RUN
 sudo docker build -t pptpd:latest /your/pptpd/dockerfile
 sudo docker run -p 1723:1723 --privileged=true -t -i -d pptpd /bin/bash
+
+NOTE：期间有遇到过无法连接上VPN的问题，看到log显示的是“LCP: timeout sending Config-Requests”，PPTP穿透需要在iptables中配置，就像一般的路由器一样。lsmod查询，发现没有pptp模块,
+通过加载（这里是在主机上加载，并非在docker容器里面）了ip_nat_pptp模块后，就能够正常拨上VPN了。
+
+modprobe ip_nat_pptp
