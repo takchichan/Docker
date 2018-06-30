@@ -1,0 +1,3 @@
+BUILD & RUN
+sudo docker build -t pptpd:latest /your/pptpd/dockerfile
+sudo docker run -p 1723:1723 --privileged=true -t -i -d pptpd /bin/bash
