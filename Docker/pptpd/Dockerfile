@@ -3,8 +3,8 @@ FROM ubuntu
 MAINTAINER TAKCHICHAN "ooooops.chan@gmail.com"
 # Update source
 RUN apt-get update
-# Install pptpd
-RUN apt-get -y install pptpd iptables net-tools
+# Install pptpd,rsyslog to see debug info
+RUN apt-get -y install pptpd iptables net-tools rsyslog
 RUN echo "localip 192.168.16.1" >> /etc/pptpd.conf
 RUN echo "remoteip 192.168.16.234-238,192.168.16.245" >> /etc/pptpd.conf
 RUN echo "ms-dns 8.8.8.8" >> /etc/ppp/pptpd-options
